@@ -5,15 +5,11 @@ import numpy as np
 # modify this function, and create other functions below as you wish
 def question01(portfolios):
   # modify and then return the variable below
-
-  if(len(portfolios) == 1):
-    return portfolios[0]
-
   answer = 0
-  for i in range(16)[::-1]:
-    answer <<= 1
-    start = {port >> i for port in portfolios}
-    answer += any(answer^1 ^ s in start for s in start)
+  for i in range(len(portfolios)):
+    for j in range(len(portfolios)):
+      total = portfolios[i] ^ portfolios[j]
+      answer = answer if answer > total else total
   return answer
 
 # input: [15, 8, 6, 7] output: 15
