@@ -24,7 +24,7 @@ def question05(allowedAllocations, totalValue):
     return 0
   
   sortedShares = sorted(allowedAllocations, reverse=True)
-  upperBound = (totalValue + sortedShares[-1] -1) / sortedShares[-1] + 1
+  upperBound = (totalValue + sortedShares[-1] -1.0) / sortedShares[-1] + 1.0
 
   global ans
   ans = upperBound
