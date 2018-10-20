@@ -28,27 +28,3 @@ def recursive_power_set(items):
     ps = recursive_power_set(items)
     ps.extend([i + [e] for i in ps])
     return ps
-
-
-cashflow_in = [66, 293, 215, 188, 147, 326, 449, 162, 46, 350]
-cashflow_out = [170, 153, 305, 290, 187]
-print(question02(cashflow_in,cashflow_out))
-
-# input: (cashflow_in, cashflow_out)
-# output: 0
-
-cashflow_in_1 = [189, 28]
-cashflow_out_1 = [43, 267, 112, 166]
-
-# input: (cashflow_in, cashflow_out)
-# output: 8
-
-print(question02(cashflow_in_1,cashflow_out_1))
-
-cashflow_in_2 = [72, 24, 73, 4, 28, 56, 1, 43]
-cashflow_out_2 = [27]
-
-# input: (cashflow_in, cashflow_out)
-# output: 1
-
-print(question02(cashflow_in_2,cashflow_out_2))

@@ -2,6 +2,11 @@
 
 import numpy as np
 
+class TrieNode():
+  zero = None
+  one = None
+  value = None
+
 # modify this function, and create other functions below as you wish
 def question01(portfolios):
   root = TrieNode()
@@ -45,8 +50,3 @@ def question01(portfolios):
       answer = temp_max
   
   return answer
-
-class TrieNode():
-  zero = None
-  one = None
-  value = None
