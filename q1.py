@@ -4,21 +4,49 @@ import numpy as np
 
 # modify this function, and create other functions below as you wish
 def question01(portfolios):
-  # modify and then return the variable below
+  root = TrieNode()
+  bits = range(31,-1,-1)
+
+  for p in portfolios:
+    current = root
+    for i in bits:
+      m = 1 << i
+      mp = p & m
+
+      if mp is 0:
+        if not current.zero:
+          current.zero = TrieNode()
+        current = current.zero
+      else:
+        if not current.zero:
+          current.one = TrieNode()
+        current = current.one
+    current.value = p
+  
   answer = 0
-  for i in range(len(portfolios)):
-    for j in range(len(portfolios)):
-      total = portfolios[i] ^ portfolios[j]
-      answer = answer if answer > total else total
+  for p in portfolios:
+    current = root
+    for i in bits:
+      m = 1 << i
+      mp = p & m
+
+      if mp is 0:
+        if current.one:
+          current = current.one
+        else:
+          current = current.zero
+      else:
+        if current.zero:
+          current = current.zero
+        else:
+          current = current.one
+    temp_max = p ^ current.value
+    if temp_max > answer:
+      answer = temp_max
+  
   return answer
 
-# input: [15, 8, 6, 7] output: 15
-test1 = [15, 8, 6, 7]
-print("Test 1: ",question01(test1))
-
-# input: [9, 7, 12, 2] output: 14
-test2 = [9, 7, 12, 2]
-print("Test 2: ",question01(test2))
-
-test3 = [6,1,2,3,4,5,6,7,7,8,9,10,11,12,12,13,14,19,1,6,7]
-print("Test 3: ",question01(test3))
+class TrieNode():
+  zero = None
+  one = None
+  value = None
