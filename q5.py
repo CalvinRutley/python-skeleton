@@ -1,5 +1,5 @@
 # ONLY EDIT FUNCTIONS MARKED CLEARLY FOR EDITING
-
+from __future__ import division
 import numpy as np
 
 def question05(allowedAllocations, totalValue):
@@ -24,7 +24,7 @@ def question05(allowedAllocations, totalValue):
     return 0
   
   sortedShares = sorted(allowedAllocations, reverse=True)
-  upperBound = (totalValue + sortedShares[-1] -1.0) / sortedShares[-1] + 1.0
+  upperBound = (totalValue + sortedShares[-1] -1) / sortedShares[-1] + 1
 
   global ans
   ans = upperBound
